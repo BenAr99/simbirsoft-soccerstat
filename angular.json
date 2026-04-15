@@ -1,0 +1,115 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "schematicCollections": ["angular-eslint"]
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "simbirsoft-soccerstat": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "type": "component",
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "standalone": true,
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "type": "directive",
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "type": "service",
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "typeSeparator": ".",
+          "skipTests": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "src/styles/styles.scss",
+              {
+                "input": "src/styles/variables.scss",
+                "inject": true
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "simbirsoft-soccerstat:build:production"
+            },
+            "development": {
+              "buildTarget": "simbirsoft-soccerstat:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}
