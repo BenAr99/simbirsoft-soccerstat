@@ -48,6 +48,9 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "assets": [
               {
                 "glob": "**/*",
@@ -62,8 +65,7 @@
             "styles": [
               "src/styles/styles.scss",
               {
-                "input": "src/styles/variables.scss",
-                "inject": true
+                "input": "src/styles/variables.scss"
               }
             ]
           },

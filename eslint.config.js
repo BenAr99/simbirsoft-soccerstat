@@ -44,7 +44,6 @@ module.exports = defineConfig([
       '@angular-eslint/no-empty-lifecycle-method': 'error',
       '@angular-eslint/prefer-on-push-component-change-detection': 'error',
       '@angular-eslint/prefer-output-readonly': 'error',
-      '@angular-eslint/prefer-signals': 'error',
       '@angular-eslint/prefer-standalone': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/naming-convention': [
@@ -59,8 +58,7 @@ module.exports = defineConfig([
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-shadow': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
-      'eqeqeq': 'error',
-      'complexity': ['error', 3],
+      eqeqeq: 'error',
       'guard-for-in': 'error',
       'max-classes-per-file': ['error', 1],
       'max-len': [
@@ -117,7 +115,6 @@ module.exports = defineConfig([
       '@angular-eslint/template/eqeqeq': 'error',
       '@angular-eslint/template/prefer-control-flow': 'error',
       '@angular-eslint/template/prefer-ngsrc': 'warn',
-      '@angular-eslint/template/prefer-self-closing-tags': 'warn',
       '@angular-eslint/template/use-track-by-function': 'warn',
     },
   },

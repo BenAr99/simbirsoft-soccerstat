@@ -1,9 +1,18 @@
 :host {
   display: block;
   padding: 21px 16px 5px;
+  background-color: var(--white-color);
 }
 
 header {
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+.header__nav {
+  display: flex;
+  li {
+    margin-left: 10px;
+  }
 }
