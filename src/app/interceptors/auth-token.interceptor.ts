@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '@environments/environment';
 
 export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const token = environment.apiKey;
