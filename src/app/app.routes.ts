@@ -26,11 +26,13 @@ export const routes: Routes = [
       {
         path: 'leagues/:id',
         providers: [{ provide: CALENDAR_SERVICE_TOKEN, useExisting: LeaguesService }],
+        data: { navigationName: 'Лиги', path: '/leagues' },
         component: CalendarComponent,
       },
       {
         path: 'teams/:id',
         providers: [{ provide: CALENDAR_SERVICE_TOKEN, useExisting: TeamsService }],
+        data: { navigationName: 'Команды', path: '/teams' },
         component: CalendarComponent,
       },
     ],

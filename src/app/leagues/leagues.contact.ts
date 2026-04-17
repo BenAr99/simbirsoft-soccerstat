@@ -19,6 +19,8 @@ export interface LeaguesResponse {
 }
 
 export interface LeaguesMatchesResponse {
+  competition: { name: string };
+
   matches: [
     {
       homeTeam: {

@@ -1,10 +1,17 @@
 <div class="date-picker__container" (click)="showPicker(datePicker)">
-  <input #datePicker class="date-picker__hidden" type="date" [(ngModel)]="value" />
   <input
     #datePicker
+    class="date-picker__hidden"
+    type="date"
+    [disabled]="disabled"
+    [value]="value"
+    (change)="onDateChange($event)"
+  />
+  <input
     class="date-picker"
     placeholder=""
-    value="{{ value }}"
+    [value]="value | date: 'dd.MM.yyyy'"
+    (blur)="onBlur()"
     (keydown)="blockInput($event)"
   />
   <img alt="Изображение календаря" src="assets/icons/date-picker.svg" />

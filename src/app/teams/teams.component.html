@@ -1,7 +1,7 @@
-<app-input image="search.svg" placeholder="Поиск"></app-input>
+<app-input image="search.svg" placeholder="Поиск" [formControl]="searchControl"></app-input>
 
 <div class="teams__content">
-  @for (team of paginationChange | async; track team.id) {
+  @for (team of view | async; track team.id) {
     <app-card
       [img]="team.crest"
       [name]="team.name"
@@ -10,4 +10,7 @@
   }
 </div>
 
-<app-pagination [count]="allTeams.length" (range)="change($event)"></app-pagination>
+<app-pagination
+  [count]="(countSubject | async) ?? 0"
+  (range)="onPageChange($event)"
+></app-pagination>

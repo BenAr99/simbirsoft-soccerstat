@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -20,7 +19,7 @@ import { COUNT_PER_PAGE_TOKEN } from './page-pagination.token';
   styleUrl: './pagination.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaginationComponent implements OnChanges {
+export class PaginationComponent<T> implements OnChanges {
   @Input() count = 0;
   @Output() range = new EventEmitter<[number, number]>();
 
@@ -32,13 +31,19 @@ export class PaginationComponent implements OnChanges {
 
   perPage = inject(COUNT_PER_PAGE_TOKEN);
 
-  ngOnChanges(changes: SimpleChanges<PaginationComponent>): void {
-    if (changes.count?.currentValue) {
+  ngOnChanges(changes: SimpleChanges<PaginationComponent<T>>): void {
+    console.log(this.count);
+
+    if (changes.count?.currentValue !== undefined) {
+      this.currentPage = 1;
+
       const count = Math.ceil(this.count / this.perPage);
       this.pages = new Array(count).fill(0);
       this.pages = this.pages.map((_, index) => {
         return index + 1;
       });
+
+      this.emitRangeChange();
     }
   }
 

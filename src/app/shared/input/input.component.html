@@ -1,4 +1,4 @@
 @if (image) {
   <img alt="Иконка поля" src="assets/icons/{{ image }}" />
 }
-<input placeholder="{{ placeholder }}" />
+<input placeholder="{{ placeholder }}" [value]="value" (input)="onInput($event)" />

@@ -43,7 +43,6 @@ module.exports = defineConfig([
       'prettier/prettier': 'error',
       '@angular-eslint/no-empty-lifecycle-method': 'error',
       '@angular-eslint/prefer-on-push-component-change-detection': 'error',
-      '@angular-eslint/prefer-output-readonly': 'error',
       '@angular-eslint/prefer-standalone': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/naming-convention': [
@@ -114,7 +113,6 @@ module.exports = defineConfig([
       '@angular-eslint/template/cyclomatic-complexity': ['warn', { maxComplexity: 10 }],
       '@angular-eslint/template/eqeqeq': 'error',
       '@angular-eslint/template/prefer-control-flow': 'error',
-      '@angular-eslint/template/prefer-ngsrc': 'warn',
       '@angular-eslint/template/use-track-by-function': 'warn',
       '@angular-eslint/template/interactive-supports-focus': 'off',
       '@angular-eslint/template/click-events-have-key-events': 'off',

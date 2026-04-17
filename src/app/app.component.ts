@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { RouterOutlet } from '@angular/router';
-import { NotificationService } from './shared/notification.service';
 import { Observable } from 'rxjs';
+import { NotificationService } from './shared/notification.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({

@@ -1,6 +1,6 @@
 @if (currentPage > 1) {
   <button type="button" (click)="prevPage()">
-    <img alt="Назад" height="12" ngSrc="assets/icons/left.svg" width="12" />
+    <img alt="Назад" src="assets/icons/left.svg" />
   </button>
 }
 
@@ -14,6 +14,6 @@
 
 @if (currentPage < pages[pages.length - 1]) {
   <button type="button" (click)="nextPage()">
-    <img alt="Вперед" height="12" ngSrc="assets/icons/right.svg" width="12" />
+    <img alt="Вперед" src="assets/icons/right.svg" />
   </button>
 }

@@ -1,7 +1,7 @@
-<app-input image="search.svg" placeholder="Поиск"></app-input>
+<app-input image="search.svg" placeholder="Поиск" [formControl]="searchControl"></app-input>
 
 <div class="leagues__content">
-  @for (league of paginationChange | async; track league.id) {
+  @for (league of view | async; track league.id) {
     <app-card
       [description]="league.area.name"
       [img]="league.emblem"
@@ -11,4 +11,7 @@
   }
 </div>
 
-<app-pagination [count]="allLeagues.length" (range)="change($event)"></app-pagination>
+<app-pagination
+  [count]="(countSubject | async) ?? 0"
+  (range)="onPageChange($event)"
+></app-pagination>

@@ -1,7 +1,12 @@
 import { Observable } from 'rxjs';
 
 export interface CalendarService {
-  getMatches(id: string): Observable<Match[]>;
+  getMatches(id: string, startDate: Date | null, endDate: Date | null): Observable<MatchCalendar>;
+}
+
+export interface MatchCalendar {
+  name: string;
+  matches: Match[];
 }
 
 export interface Match {

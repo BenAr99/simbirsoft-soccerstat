@@ -1,12 +1,17 @@
+<div class="navigation">
+  <span [routerLink]="path">{{ type }}</span>
+  /
+  <span>{{ name }}</span>
+</div>
+
 <div class="match__date">
   <div class="match__date-item">
     <span>Матчи с</span>
-    <app-date-picker></app-date-picker>
+    <app-date-picker [formControl]="startDateControl"></app-date-picker>
   </div>
-
   <div class="match__date-item">
     <span>по</span>
-    <app-date-picker></app-date-picker>
+    <app-date-picker [formControl]="endDateControl"></app-date-picker>
   </div>
 </div>
 

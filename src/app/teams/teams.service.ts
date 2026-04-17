@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { TeamMatchesResponse, Teams, TeamsResponse } from './teams.contract';
-import { CalendarService, Match } from '../calendar/calendar.contract';
+import { CalendarService, MatchCalendar } from '../calendar/calendar.contract';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +16,26 @@ export class TeamsService implements CalendarService {
       .pipe(map((response) => response.teams));
   }
 
-  getMatches(id: string): Observable<Match[]> {
+  getTeam(id: string): Observable<Teams> {
     return this.http
-      .get<TeamMatchesResponse>(`https://api.football-data.org/v4/teams/${id}/matches`)
-      .pipe(
-        map((response) => {
-          return response.matches.map((match) => {
+      .get<Teams>(`https://api.football-data.org/v4/teams/${id}`)
+      .pipe(map((response) => response));
+  }
+
+  getMatches(id: string, startDate: Date | null, endDate: Date | null): Observable<MatchCalendar> {
+    const startDateParam = startDate ? `&dateFrom=${startDate.toISOString().split('T')[0]}` : '';
+    const endDateParam = endDate ? `&dateTo=${endDate.toISOString().split('T')[0]}` : '';
+
+    return forkJoin([
+      this.http.get<TeamMatchesResponse>(
+        `https://api.football-data.org/v4/teams/${id}/matches?${startDateParam}&${endDateParam}`,
+      ),
+      this.getTeam(id),
+    ]).pipe(
+      map(([matches, team]) => {
+        return {
+          name: team.name,
+          matches: matches.matches.map((match) => {
             return {
               date: match.utcDate,
               status: match.status,
@@ -38,8 +52,9 @@ export class TeamsService implements CalendarService {
                 penalties: match.score.penalties?.away ?? undefined,
               },
             };
-          });
-        }),
-      );
+          }),
+        };
+      }),
+    );
   }
 }
