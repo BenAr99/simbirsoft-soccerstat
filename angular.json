@@ -45,7 +45,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "baseHref": "/",
+            "baseHref": "/simbirsoft-soccerstat/",
             "outputPath": "dist/simbirsoft-soccerstat",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
