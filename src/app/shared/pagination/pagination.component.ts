@@ -9,12 +9,11 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { PagePaginationPipe } from './page-pagination.pipe';
-import { NgOptimizedImage } from '@angular/common';
 import { COUNT_PER_PAGE_TOKEN } from './page-pagination.token';
 
 @Component({
   selector: 'app-pagination',
-  imports: [PagePaginationPipe, NgOptimizedImage],
+  imports: [PagePaginationPipe],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
