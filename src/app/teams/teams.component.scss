@@ -1,6 +1,5 @@
 @use 'variables' as var;
 
-
 :host {
   display: flex;
   flex-direction: column;
@@ -18,7 +17,7 @@
   width: 100%;
 }
 
-@media (min-width: var.$small-phone) and (max-width: var.$tablet){
+@media (max-width: var.$tablet) {
   :host {
     padding: 8px 35px 23px;
   }
@@ -29,5 +28,3 @@
     align-items: center;
   }
 }
-
-

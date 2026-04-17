@@ -1,3 +1,5 @@
+@use 'variables' as var;
+
 :host {
   display: block;
   padding: 21px 16px 0;
@@ -33,6 +35,19 @@ header {
 
     &.active::after {
       transform: scaleY(1);
+    }
+  }
+}
+
+@media (max-width: var.$tablet) {
+  img {
+    width: 150px;
+  }
+  .header__nav {
+    li {
+      &::after {
+        bottom: -5px;
+      }
     }
   }
 }

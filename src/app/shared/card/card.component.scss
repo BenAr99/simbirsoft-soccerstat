@@ -7,18 +7,17 @@
   background-color: var(--white-color);
   padding: 23px 45px;
   width: 100%;
-  min-width: 325px;
   border-radius: 7px;
 }
 
-img {
-  width: 192px;
-  height: 192px;
-}
-
-@media (min-width: var.$small-phone) and (max-width: var.$tablet) {
+@media (max-width: var.$tablet) {
   :host {
-    min-width: 325px;
+    min-width: 250px;
     padding: 8px 24px;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
   }
 }

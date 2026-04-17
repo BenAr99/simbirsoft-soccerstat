@@ -1,0 +1,18 @@
+@use 'variables' as var;
+
+.error_container {
+  position: absolute;
+  padding: 10px;
+  top: 10px;
+  right: 10px;
+  border: 1px solid red;
+  background: var(--white-color);
+  border-radius: 7px;
+}
+
+@media (max-width: var.$tablet) {
+  .error_container {
+    right: 60%;
+    top: 90%;
+  }
+}

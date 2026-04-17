@@ -1,22 +1,22 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
-import { DataService } from './data.service';
 import { RouterOutlet } from '@angular/router';
+import { NotificationService } from './shared/notification.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RouterOutlet],
+  imports: [HeaderComponent, RouterOutlet, AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   protected readonly title = signal('simbirsoft-soccerstat');
-  private dataService = inject(DataService);
-
+  private notificationService = inject(NotificationService);
+  $errorMessage: Observable<string | null>;
   constructor() {
-    // this.dataService.getData().subscribe((data) => {
-    //   console.log(data);
-    // });
+    this.$errorMessage = this.notificationService.errorMessage;
   }
 }

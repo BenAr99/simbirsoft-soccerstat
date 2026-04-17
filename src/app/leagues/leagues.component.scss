@@ -2,23 +2,23 @@
 
 
 :host {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--gray-color);
   padding: 26px 109px 68px;
 }
 
 .leagues__content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 50px;
   padding: 79px 0;
   width: 100%;
 }
 
-@media (min-width: var.$small-phone) and (max-width: var.$tablet){
+@media (max-width: var.$tablet) {
   :host {
     padding: 8px 35px 23px;
   }

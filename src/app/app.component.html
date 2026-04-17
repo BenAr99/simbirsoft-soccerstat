@@ -1,2 +1,7 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
+@if (this.$errorMessage | async; as errorMessage) {
+  <div class="error_container">
+    <span>{{ errorMessage }}</span>
+  </div>
+}
