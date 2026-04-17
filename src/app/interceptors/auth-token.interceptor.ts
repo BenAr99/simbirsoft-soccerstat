@@ -1,7 +1,8 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = 'e113416506b94befada60c5b3db3b42f';
+  const token = environment.apiKey;
 
   if (req.url.includes('api.football-data.org')) {
     const modifiedRequest = req.clone({
