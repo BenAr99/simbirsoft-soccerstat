@@ -1,15 +1,13 @@
 <app-input image="search.svg" placeholder="Поиск"></app-input>
 
-@if ($teams | async; as teams) {
-  <div class="teams__content">
-    @for (team of teams; track team) {
-      <app-card
-        [img]="team.crest"
-        [name]="team.name"
-        (click)="navigationToCalendar(team.id)"
-      ></app-card>
-    }
-  </div>
+<div class="teams__content">
+  @for (team of paginationChange | async; track team.id) {
+    <app-card
+      [img]="team.crest"
+      [name]="team.name"
+      (click)="navigationToCalendar(team.id)"
+    ></app-card>
+  }
+</div>
 
-  <app-pagination [count]="teams.length"></app-pagination>
-}
+<app-pagination [count]="allTeams.length" (range)="change($event)"></app-pagination>

@@ -1,0 +1,11 @@
+<div class="date-picker__container" (click)="showPicker(datePicker)">
+  <input #datePicker class="date-picker__hidden" type="date" [(ngModel)]="value" />
+  <input
+    #datePicker
+    class="date-picker"
+    placeholder=""
+    value="{{ value }}"
+    (keydown)="blockInput($event)"
+  />
+  <img alt="Изображение календаря" src="assets/icons/date-picker.svg" />
+</div>

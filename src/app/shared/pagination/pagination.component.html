@@ -1,1 +1,19 @@
-<p>{{ pages | pagePagination: currentPage : maxPage | json }}</p>
+@if (currentPage > 1) {
+  <button type="button" (click)="prevPage()">
+    <img alt="Назад" height="12" ngSrc="assets/icons/left.svg" width="12" />
+  </button>
+}
+
+@let pagesView = pages | pagePagination: currentPage : maxPagesView;
+
+@for (page of pagesView; track $index) {
+  <button type="button" (click)="setPage(page)">
+    <span class="page-number" [class.__active]="page === currentPage">{{ page }}</span>
+  </button>
+}
+
+@if (currentPage < pages[pages.length - 1]) {
+  <button type="button" (click)="nextPage()">
+    <img alt="Вперед" height="12" ngSrc="assets/icons/right.svg" width="12" />
+  </button>
+}

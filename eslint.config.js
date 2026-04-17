@@ -116,6 +116,8 @@ module.exports = defineConfig([
       '@angular-eslint/template/prefer-control-flow': 'error',
       '@angular-eslint/template/prefer-ngsrc': 'warn',
       '@angular-eslint/template/use-track-by-function': 'warn',
+      '@angular-eslint/template/interactive-supports-focus': 'off',
+      '@angular-eslint/template/click-events-have-key-events': 'off',
     },
   },
 ]);

@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.date-picker__container {
+  display: flex;
+  background-color: var(--white-color);
+  border: 1px solid var(--black-gray-color);
+  border-radius: 7px;
+  padding: 12px 19px;
+
+  input[type='date'] {
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+}
+
+.date-picker__hidden {
+  position: absolute;
+  opacity: 0;
+}

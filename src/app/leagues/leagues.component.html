@@ -1,16 +1,14 @@
 <app-input image="search.svg" placeholder="Поиск"></app-input>
 
-@if ($leagues | async; as leagues) {
-  <div class="leagues__content">
-    @for (league of leagues; track league) {
-      <app-card
-        [description]="league.area.name"
-        [img]="league.emblem"
-        [name]="league.name"
-        (click)="navigationToCalendar(league.id)"
-      ></app-card>
-    }
-  </div>
+<div class="leagues__content">
+  @for (league of paginationChange | async; track league.id) {
+    <app-card
+      [description]="league.area.name"
+      [img]="league.emblem"
+      [name]="league.name"
+      (click)="navigationToCalendar(league.id)"
+    ></app-card>
+  }
+</div>
 
-  <app-pagination [count]="leagues.length"></app-pagination>
-}
+<app-pagination [count]="allLeagues.length" (range)="change($event)"></app-pagination>

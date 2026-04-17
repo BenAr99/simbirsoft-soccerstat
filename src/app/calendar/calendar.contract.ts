@@ -1,18 +1,21 @@
+import { Observable } from 'rxjs';
+
 export interface CalendarService {
-  getCalendar(id: string): any;
+  getMatches(id: string): Observable<Match[]>;
 }
 
-export interface Calendar {
+export interface Match {
   date: Date;
   status: Status;
-  awayTeam: string;
-  homeTeam: string;
+  home: MatchTeamData;
+  away: MatchTeamData;
 }
 
-export interface score {
-  fullTime: number;
-  halfTime: number;
-
+export interface MatchTeamData {
+  name: string;
+  fullTimeScore?: number;
+  halfTimeScore?: number;
+  penalties?: number;
 }
 
 export enum Status {

@@ -1,2 +1,35 @@
-<p>calendar works!</p>
-<input type="date" />
+<div class="match__date">
+  <span>Матчи с</span>
+  <app-date-picker></app-date-picker>
+  <span>по</span>
+  <app-date-picker></app-date-picker>
+</div>
+
+<div class="match__container">
+  @for (match of $matches | async; track $index) {
+    <div class="match__content">
+      <div class="match__description">
+        <span>{{ match.date | date: 'dd.MM.yyyy' }}</span>
+        <span>{{ match.date | date: 'hh:mm' }}</span>
+        <span>{{ match.status }}</span>
+        <span class="match__teams">{{ match.home.name }} - {{ match.away.name }}</span>
+      </div>
+
+      <div class="match__result">
+        @if (match.home.fullTimeScore !== undefined && match.away.fullTimeScore !== undefined) {
+          <span> {{ match.home.fullTimeScore }}:{{ match.away.fullTimeScore }} </span>
+        }
+
+        @if (match.home.halfTimeScore !== undefined && match.away.halfTimeScore !== undefined) {
+          <span> ({{ match.home.halfTimeScore }}:{{ match.away.halfTimeScore }}) </span>
+        }
+
+        @if (match.home.penalties !== undefined && match.away.penalties !== undefined) {
+          <span> ({{ match.home.penalties }}:{{ match.away.penalties }}) </span>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+<app-pagination></app-pagination>

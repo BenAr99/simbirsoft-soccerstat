@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+}
+
+.page-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 28px;
+  background: var(--gray-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.__active {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
